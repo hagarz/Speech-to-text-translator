@@ -112,7 +112,7 @@ def listen_print_loop(responses):
         transcript = result.alternatives[0].transcript
         #lang = translate_client.detect_language(transcript)
 
-        target = 'en'
+        target = 'he'
         transcript = translate_client.translate(transcript, target_language=target)['translatedText']
 
         # Display interim results, but with a carriage return at the end of the
@@ -173,8 +173,10 @@ def audio_streamer(transcoder_):
     return the output of Google speech to text
     """
 
-    language_code = 'he-IL'  # a BCP-47 language tag
-    #language_code = 'en-US'
+    # See http://g.co/cloud/speech/docs/languages
+    # for a list of supported languages.
+    #language_code = 'he-IL'  # a BCP-47 language tag
+    language_code = 'en-US' # a BCP-47 language tag
 
     client = speech.SpeechClient()  # Instantiates a client
     config = types.RecognitionConfig(
@@ -196,6 +198,9 @@ def audio_streamer(transcoder_):
 
 
 if __name__ == '__main__':
+    if sys.version_info[0] < 3:
+        raise Exception("Must be using Python 3")
+
     # create a streaming socket
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
         # bind the socket to a host and a port
