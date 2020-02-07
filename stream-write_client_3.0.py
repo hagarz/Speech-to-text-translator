@@ -34,14 +34,12 @@ def send_audio():
     print('listening and connecting...')
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as newSocket:
         newSocket.connect((HOST, PORT))
-        frames = []
         while True:
             data = audio_stream.read(CHUNK)
             # Send data to the socket
             #  Unlike send(),
             # sendall() continues to send data from bytes until either all data has been sent or an error occurs.
             newSocket.sendall(data)
-
 
 
 
