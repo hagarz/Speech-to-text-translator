@@ -12,6 +12,6 @@ The software has only been tested in Python3.6.
  
    ***example:***
     > *credential_path = r"C:\Users\yourname\Documents\subfoldername\google-app-credentials.json"*
-3. In not run locally, HOST should be '0.0.0.0'.
+3. If not run locally, HOST should be '0.0.0.0'.
 
 
